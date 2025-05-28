@@ -1,0 +1,36 @@
+pipeline {
+agent any
+	stages {
+	stage('Checkout') {
+    	steps {
+        	git branch: 'main', url: 'https://github.com/AnnaBinoy09/Devops.git' // Replace with your repository URL
+    	}
+	}
+	stage('Build') {
+    	steps {
+        	// Use 'mvn clean package' for Maven or 'gradle build' for Gradle
+        	sh 'mvn clean package'
+    	}
+	}
+	stage('Test') {
+    	steps {
+        	// Run unit tests using Maven or Gradle
+        	sh 'mvn test'
+    	}
+	}
+  	stage('Archive Artifacts') {
+        	steps {
+            	archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
+        	}
+    	}
+    	stage('Deploy'){
+        	steps{
+            	sh """
+                	export ANSIBLE_HOST_KEY_CHECKING=False
+                	ansible-playbook -i hosts.ini deploy.yml  --extra-vars='ansible_become_pass=exam@cse'
+          	                	"""
+//enter student password above 
+        	}
+    	}
+	}
+}
