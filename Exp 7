@@ -1,0 +1,20 @@
+1. cd Documents
+2. gedit hosts.ini
+3. Inside hosts.ini Type the following:
+\\
+[local]
+localhost ansible_connection=local
+\\
+4. run The following to check inventory connectivity:
+> ansible all -i hosts.ini --list-hosts
+> ansible all -i hosts.ini -m ping
+5. gedit playbook.yml type the following
+\\ 
+- name: My first Playbook
+  hosts: local
+  connection: local
+  tasks:
+   - name: My First Task
+     debug:
+      msg: "Ansible is a configuration management tool"
+6.ansible-playbook -i hosts.ini playbook.yml
