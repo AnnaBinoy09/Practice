@@ -1,0 +1,24 @@
+# the git commands:
+> git
+> git config --global user.email "anbi22cs@cmrit.ac.in"
+> git congig --global user.name "AnnaBinoy09"
+
+# creation of ssh Key:
+> ssh-keygen -t ed25519 -C "anbi22cs@cmrit.ac.in"
+> cat /home/student/.ssh/id_ed25519.pub
+
+# git commands  to push file and point to you repository:
+> git init
+> git add pom.xml
+> git add src
+> git remote add origin git@github.com:AnnaBinoy09/demo_devops
+> git config --global push.autoSetupRemote true
+> git branch -M main
+> git push origin main
+# if there is error:
+  > git pull --rebase origin main 
+  > git push origin main
+# Start jenkin login 
+> sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+# Create new item copy paste pipeline code
+
