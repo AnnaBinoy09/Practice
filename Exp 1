@@ -1,0 +1,11 @@
+#Create a maven project:
+mvn archetype:generate -DgroupId=com.example -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+# Navigate in the directory pom.xml
+<properties>
+<maven.compiler.source>8</maven.compiler.source>
+<maven.compiler.target>8</maven.compiler.target>
+</properties>
+
+#compile and run the file:
+java -cp target/my-app-1.0-SNAPSHOT.jar com.example.App
